@@ -5,30 +5,26 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.example.AuthorEntity;
-
+import java.util.List;
 import java.util.ArrayList;
 
-@Getter
-@Setter
+
 @AllArgsConstructor
+@Setter
+@Getter
 @Data
 public class Library {
+    private List data;
+
+
+
 
     public static void LibraryMain() {
-
-        ArrayList<String> info = new ArrayList<String>();
         System.out.println("Ваши книги!");
-
-        int b = info.size();
-        System.out.println(b);
-        for (int c = 1; c != 8; ) {
-            System.out.println(info.get(c));
-            c++;
-
-        }
 
 
     }
+
 
 }
 

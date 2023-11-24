@@ -10,4 +10,10 @@ import lombok.Setter;
 public class PublisherEntity {
     private String NamePublisher;
     private String City;
+
+    @Override
+    public String toString() {
+        return "издательство:" + NamePublisher + " - " + City;
+    }
+
 }

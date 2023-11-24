@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Data
+
 @Setter
 @Getter
 public class AuthorEntity {
@@ -15,16 +16,11 @@ public class AuthorEntity {
     private String  lastName;
 
 
-    public String getNameAuthor() {
-        return nameAuthor;
-    }
 
-    public String getLastName() {
-        return lastName;
-    }
 
-    public String getSurename() {
-        return Surename;
+    @Override
+    public String toString() {
+        return Surename + ' ' + nameAuthor + ' ' + lastName + ' ';
     }
 
 

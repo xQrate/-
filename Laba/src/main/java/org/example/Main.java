@@ -1,24 +1,34 @@
 package org.example;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-
+import org.example.AuthorEntity;
+import org.example.Library;
+import org.example.PublisherEntity;
+import org.example.BookEntity;
 import java.util.Scanner;
-
+@AllArgsConstructor
 @Setter
 @Getter
 @Data
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
         Scanner scan = new Scanner(System.in);
+        BookEntity book = new BookEntity();
+        AuthorEntity Author = new AuthorEntity();
+        PublisherEntity Publisher = new PublisherEntity();
 
-        Library libra = new Library();
+
+        File file = new File("path/to/file");
 
 
         int a = 1;
-        ArrayList <String> info = new ArrayList<String>();
+
 
         do {
             menu.MainMenu();
@@ -28,60 +38,75 @@ public class Main {
             switch (a) {
                 case 1:
                     //ввод автора
-                    AuthorEntity Author = new AuthorEntity();
+
                     scan.nextLine();
                     System.out.printf("Введите имя автора: ");
-                    String name = scan.nextLine();
-                    Author.setNameAuthor(name);
+                     Author.setNameAuthor(scan.nextLine());
+
                     System.out.printf("Введите Фамилию автора: ");
-                    String Lastname = scan.nextLine();
-                    Author.setLastName(Lastname);
+                     Author.setLastName(scan.nextLine());
+
                     System.out.printf("Введите Отчество автора: ");
-                    String surenam = scan.nextLine();
-                    Author.setSurename(surenam);
+                    Author.setSurename(scan.nextLine());
+
+                    book.setAftor(String.valueOf(Author));
                     System.out.println("Далее заполним книгу!");
 
 
                     //Ввод книги
-                    BookEntity book = new BookEntity();
+
                     //scan.nextLine();
                     System.out.printf("Введите  название книги: ");
-                    String bookname = scan.nextLine();
-                    book.setBookname(bookname);
+                   book.setBookname( scan.nextLine());
+
                     System.out.printf("Введите  год книги: ");
-                    String bookyear = scan.nextLine();
-                    book.setYear(bookyear);
+                    book.setYear(scan.nextLine());
+
                     System.out.printf("Введите жанр книги: ");
-                    String bookgenre = scan.nextLine();
+                   book.setGenre(scan.nextLine());
+
+                    System.out.printf("Введите количество страниц книги: ");
+                    book.setAmountStr(scan.nextLine());
+
+                    System.out.printf("Введите имя автора: ");
+                    book.setAftor(scan.nextLine());
+
                     System.out.println("Далее заполним издательство!");
 
                     //ввод издания
 
-                    PublisherEntity Publisher = new PublisherEntity();
+
                     // scan.nextLine();
                     System.out.printf("Введите  название издания: ");
-                    String publisher = scan.nextLine();
-                    Publisher.setNamePublisher(publisher);
+                   Publisher.setNamePublisher(scan.nextLine());
+        book.setPublisher(Publisher);
                     System.out.printf("Введите  город издания: ");
-                    String city = scan.nextLine();
-                    Publisher.setCity(city);
+                  Publisher.setCity(scan.nextLine());
 
-                    info.set(0,name);
-                    info.set(1,Lastname);
-                    info.set(2,surenam);
-                    info.set(3,bookname);
-                    info.set(4,bookgenre);
-                    info.set(5,bookyear);
-                    info.set(6,publisher);
-                    info.set(7,city);
 
-                    Library.LibraryMain();
+                    if (Library.getData() == null) {
+                        List temp = new ArrayList<>();
+                        temp.add(book);
+                        Library.setData(temp);
+                        System.out.println(" Книга добавлена!");
+                    } else {
+                        Library.getData().add(book);
+                        System.out.println("Книга добавлена!");
+                    }
+
+                    menu.MainMenu();
+
                     break;
 
                 //удаление
                 case 2:
 
 
+                    if (file.delete()) {
+                        System.out.println(file.getName() + " deleted");
+                    } else {
+                        System.out.println(file.getName() + " not deleted");
+                    }
                     break;
 
                 //переход в библиотеку
@@ -102,9 +127,11 @@ public class Main {
             }
 
             }
-            while (a == 5);
+            while (a == 6);
 
 
         }
+
+
     }
 
