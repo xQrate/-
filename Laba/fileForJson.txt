@@ -1,0 +1,1 @@
+{"data":[{"publisher":{"NamePublisher":"","City":"dsfhdh"},"Bookname":"adsg","year":324234,"genre":"gdfsgdsfgddddd","amountStr":32455,"aftor":"adfadsf asfsadf adadsf "}]}

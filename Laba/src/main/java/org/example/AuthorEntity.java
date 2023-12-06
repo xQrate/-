@@ -1,4 +1,5 @@
 package org.example;
+
 import org.example.menu;
 import lombok.Data;
 import lombok.Getter;
@@ -13,9 +14,7 @@ public class AuthorEntity {
 
     private String nameAuthor;
     private String Surename;
-    private String  lastName;
-
-
+    private String lastName;
 
 
     @Override
